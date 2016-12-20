@@ -1,0 +1,153 @@
+bashyan-ubuntu@ubuntu:~$ sudo su hduser
+[sudo] password for bashyan-ubuntu:
+hduser@ubuntu:/home/bashyan-ubuntu$ cd
+hduser@ubuntu:/usr/local/hadoop/sbin$ start-all.sh
+This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+16/12/21 00:32:26 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Starting namenodes on [localhost]
+localhost: starting namenode, logging to /usr/local/hadoop/logs/hadoop-hduser-namenode-ubuntu.out
+localhost: starting datanode, logging to /usr/local/hadoop/logs/hadoop-hduser-datanode-ubuntu.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-hduser-secondarynamenode-ubuntu.out
+16/12/21 00:32:53 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-hduser-resourcemanager-ubuntu.out
+localhost: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-hduser-nodemanager-ubuntu.out
+hduser@ubuntu:~$ jps
+5826 DataNode
+6178 ResourceManager
+6019 SecondaryNameNode
+34691 Jps
+5718 NameNode
+6294 NodeManager
+hduser@ubuntu:~$ cd /home/bashyan-ubuntu/Documents
+hduser@ubuntu:/home/bashyan-ubuntu/Documents$ jps
+5826 DataNode
+6178 ResourceManager
+6019 SecondaryNameNode
+5718 NameNode
+6294 NodeManager
+36838 Jps
+hduser@ubuntu:/home/bashyan-ubuntu/Documents$ hadoop fs -mkdir -p /usr/local/hadoop/myProject
+16/12/21 02:12:14 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hduser@ubuntu:/home/bashyan-ubuntu/Documents$ hadoop fs -put file:///home/bashyan-ubuntu/Documents/test /usr/local/hadoop/myProject/test
+16/12/21 02:49:56 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hduser@ubuntu:/home/bashyan-ubuntu/Documents$ hadoop jar wc.jar /usr/local/hadoop/myProject/test /usr/local/hadoop/output5
+16/12/21 02:50:35 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+16/12/21 02:50:40 INFO Configuration.deprecation: session.id is deprecated. Instead, use dfs.metrics.session-id
+16/12/21 02:50:40 INFO jvm.JvmMetrics: Initializing JVM Metrics with processName=JobTracker, sessionId=
+16/12/21 02:50:40 INFO jvm.JvmMetrics: Cannot initialize JVM Metrics with processName=JobTracker, sessionId= - already initialized
+16/12/21 02:50:43 INFO mapred.FileInputFormat: Total input paths to process : 1
+16/12/21 02:50:44 INFO mapreduce.JobSubmitter: number of splits:1
+16/12/21 02:50:45 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local1355086575_0001
+16/12/21 02:50:45 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+16/12/21 02:50:45 INFO mapreduce.Job: Running job: job_local1355086575_0001
+16/12/21 02:50:45 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+16/12/21 02:50:45 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapred.FileOutputCommitter
+16/12/21 02:50:45 INFO mapred.LocalJobRunner: Waiting for map tasks
+16/12/21 02:50:45 INFO mapred.LocalJobRunner: Starting task: attempt_local1355086575_0001_m_000000_0
+16/12/21 02:50:46 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+16/12/21 02:50:46 INFO mapred.MapTask: Processing split: hdfs://localhost:54310/usr/local/hadoop/myProject/test:0+58
+16/12/21 02:50:46 INFO mapred.MapTask: numReduceTasks: 1
+16/12/21 02:50:46 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+16/12/21 02:50:46 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+16/12/21 02:50:46 INFO mapred.MapTask: soft limit at 83886080
+16/12/21 02:50:46 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+16/12/21 02:50:46 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+16/12/21 02:50:46 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+16/12/21 02:50:46 INFO mapreduce.Job: Job job_local1355086575_0001 running in uber mode : false
+16/12/21 02:50:46 INFO mapreduce.Job:  map 0% reduce 0%
+16/12/21 02:50:47 INFO mapred.LocalJobRunner: 
+16/12/21 02:50:47 INFO mapred.MapTask: Starting flush of map output
+16/12/21 02:50:47 INFO mapred.MapTask: Spilling map output
+16/12/21 02:50:47 INFO mapred.MapTask: bufstart = 0; bufend = 94; bufvoid = 104857600
+16/12/21 02:50:47 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26214364(104857456); length = 33/6553600
+16/12/21 02:50:47 INFO mapred.MapTask: Finished spill 0
+16/12/21 02:50:47 INFO mapred.Task: Task:attempt_local1355086575_0001_m_000000_0 is done. And is in the process of committing
+16/12/21 02:50:47 INFO mapred.LocalJobRunner: hdfs://localhost:54310/usr/local/hadoop/myProject/test:0+58
+16/12/21 02:50:47 INFO mapred.Task: Task 'attempt_local1355086575_0001_m_000000_0' done.
+16/12/21 02:50:47 INFO mapred.LocalJobRunner: Finishing task: attempt_local1355086575_0001_m_000000_0
+16/12/21 02:50:47 INFO mapred.LocalJobRunner: map task executor complete.
+16/12/21 02:50:47 INFO mapreduce.Job:  map 100% reduce 0%
+16/12/21 02:50:47 INFO mapred.LocalJobRunner: Waiting for reduce tasks
+16/12/21 02:50:47 INFO mapred.LocalJobRunner: Starting task: attempt_local1355086575_0001_r_000000_0
+16/12/21 02:50:47 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+16/12/21 02:50:47 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@72fd887c
+16/12/21 02:50:47 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=334338464, maxSingleShuffleLimit=83584616, mergeThreshold=220663392, ioSortFactor=10, memToMemMergeOutputsThreshold=10
+16/12/21 02:50:47 INFO reduce.EventFetcher: attempt_local1355086575_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
+16/12/21 02:50:48 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local1355086575_0001_m_000000_0 decomp: 114 len: 118 to MEMORY
+16/12/21 02:50:48 INFO reduce.InMemoryMapOutput: Read 114 bytes from map-output for attempt_local1355086575_0001_m_000000_0
+16/12/21 02:50:48 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 114, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->114
+16/12/21 02:50:48 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
+16/12/21 02:50:48 INFO mapred.LocalJobRunner: 1 / 1 copied.
+16/12/21 02:50:48 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
+16/12/21 02:50:49 INFO mapred.Merger: Merging 1 sorted segments
+16/12/21 02:50:49 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 106 bytes
+16/12/21 02:50:49 INFO reduce.MergeManagerImpl: Merged 1 segments, 114 bytes to disk to satisfy reduce memory limit
+16/12/21 02:50:49 INFO reduce.MergeManagerImpl: Merging 1 files, 118 bytes from disk
+16/12/21 02:50:49 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
+16/12/21 02:50:49 INFO mapred.Merger: Merging 1 sorted segments
+16/12/21 02:50:49 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 106 bytes
+16/12/21 02:50:49 INFO mapred.LocalJobRunner: 1 / 1 copied.
+16/12/21 02:50:50 INFO mapred.Task: Task:attempt_local1355086575_0001_r_000000_0 is done. And is in the process of committing
+16/12/21 02:50:50 INFO mapred.LocalJobRunner: 1 / 1 copied.
+16/12/21 02:50:50 INFO mapred.Task: Task attempt_local1355086575_0001_r_000000_0 is allowed to commit now
+16/12/21 02:50:50 INFO output.FileOutputCommitter: Saved output of task 'attempt_local1355086575_0001_r_000000_0' to hdfs://localhost:54310/usr/local/hadoop/output5/_temporary/0/task_local1355086575_0001_r_000000
+16/12/21 02:50:50 INFO mapred.LocalJobRunner: reduce > reduce
+16/12/21 02:50:50 INFO mapred.Task: Task 'attempt_local1355086575_0001_r_000000_0' done.
+16/12/21 02:50:50 INFO mapred.LocalJobRunner: Finishing task: attempt_local1355086575_0001_r_000000_0
+16/12/21 02:50:50 INFO mapred.LocalJobRunner: reduce task executor complete.
+16/12/21 02:50:50 INFO mapreduce.Job:  map 100% reduce 100%
+16/12/21 02:50:50 INFO mapreduce.Job: Job job_local1355086575_0001 completed successfully
+16/12/21 02:50:50 INFO mapreduce.Job: Counters: 38
+	File System Counters
+		FILE: Number of bytes read=20075982
+		FILE: Number of bytes written=20733836
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=116
+		HDFS: Number of bytes written=34
+		HDFS: Number of read operations=13
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+	Map-Reduce Framework
+		Map input records=1
+		Map output records=9
+		Map output bytes=94
+		Map output materialized bytes=118
+		Input split bytes=106
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=4
+		Reduce shuffle bytes=118
+		Reduce input records=9
+		Reduce output records=4
+		Spilled Records=18
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=84
+		CPU time spent (ms)=0
+		Physical memory (bytes) snapshot=0
+		Virtual memory (bytes) snapshot=0
+		Total committed heap usage (bytes)=330301440
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=58
+	File Output Format Counters 
+		Bytes Written=34
+hduser@ubuntu:/home/bashyan-ubuntu/Documents$ hadoop fs -cat /usr/local/hadoop/output5/part-00000
+16/12/21 02:55:12 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+apple	3
+banana	2
+mango	2
+orange	2
+hduser@ubuntu:/home/bashyan-ubuntu/Documents$ 
+
