@@ -1,0 +1,5 @@
+toshiba#laptop
+apple#iphone
+samsung#watch
+canon#camera
+yamaha#guitar
