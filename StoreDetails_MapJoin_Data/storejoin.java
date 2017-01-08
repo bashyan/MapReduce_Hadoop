@@ -17,7 +17,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class storejoin
 {
-	
+	 
 	
 	public static class MyMapper extends Mapper<LongWritable,Text, Text, Text> 
 	{
